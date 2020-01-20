@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+    <head>
+        <title>Login</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <!-- External CSS libraries -->
+        <link type="text/css" rel="stylesheet" href="./assets/css/bootstrap.min.css">
+        <link type="text/css" rel="stylesheet" href="./assets/fonts/font-awesome/css/font-awesome.min.css">
+        <link type="text/css" rel="stylesheet" href="./assets/fonts/flaticon/font/flaticon.css">
+
+        <!-- Favicon icon -->
+        <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon" >
+
+        <!-- Google fonts -->
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800%7CPoppins:400,500,700,800,900%7CRoboto:100,300,400,400i,500,700">
+
+        <!-- Custom Stylesheet -->
+        <link type="text/css" rel="stylesheet" href="./assets/css/style.css">
+        <link rel="stylesheet" type="text/css" id="style_sheet" href="./assets/css/skins/default.css">
+
+        <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-firestore.js"></script>
+        <script src = "https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"> </script>
+
+    </head>
+    <body id="top">
+    <div class="page_loader"></div>
+
+    <!-- Login 23 start -->
+    <div class="login-23">
+        <div class="container">
+            <div class="col-md-12 pad-0">
+                <div class="row login-box-12">
+                    <div class="col-lg-7 col-sm-12 col-pad-0 align-self-center">
+                        <div class="login-inner-form">
+                            <div class="details">
+                                <h3>Sign into your collage account</h3>
+                                <form action="#" method="GET">
+                                    <div class="form-group">
+                                        <input type="email" id="email" name="email" class="input-text" placeholder="Email Address">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" id="password" name="Password" class="input-text" placeholder="Password">
+                                    </div>
+                                    <div class="checkbox clearfix">
+                                        <!-- <div class="form-check checkbox-theme">
+                                            <input class="form-check-input" type="checkbox" value="" id="rememberMe">
+                                            <label class="form-check-label" for="rememberMe">
+                                                Remember me
+                                            </label>
+                                        </div> -->
+                                        <a href="forgot-password.html">Forgot Password</a>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" id="submit" class="btn-md btn-theme btn-block">Login</button>
+                                    </div>
+                                </form>
+                                <p>Don't have an account?<a href="register.html"> Register here</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-lg-5 col-md-12 col-sm-12 col-pad-0 bg-img align-self-center none-992">
+                        <a href="#">
+                            <img src="./assets/img/logos/logo.png" class="logo" alt="logo">
+                        </a>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt Lorem Ipsum</p>
+                        <a href="#" class="btn-outline">View More</a>
+                        <ul class="social-list clearfix">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Login 23 end -->
+    <!-- External JS libraries -->
+    <script src="../backend/config.js"></script>
+    <script src="./assets/js/jquery-2.2.0.min.js"></script>
+    <script src="./assets/js/popper.min.js"></script>
+    <script src="./assets/js/bootstrap.min.js"></script>
+    <!-- Custom JS Script -->
+
+    <script>
+        $('#submit').on('click',(e)=>{
+                e.preventDefault();
+                var email = $('#email').val();
+                var password = $('#password').val();
+                if(email != '' && password != ''){
+                    firebase.auth().signInWithEmailAndPassword(email,password)
+                    .then(()=>{
+                        window.location = "home.html";
+                    })
+                    .catch(function(error) {
+                        var errorMessage = error.message;
+                        alert(errorMessage);
+                    });
+                }
+            });
+    </script>
+
+    </body>
+</html>
