@@ -5,8 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home</title>
+    <link type="text/css" rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-firestore.js"></script>
+    <script src = "https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"> </script>
 </head>
 <body>
+
+    <div style="text-align: center;">
+        <p id="name" style="font-weight: bold;font-size: 20px;">Welcome &nbsp; <span id="innername">sreehari</span></p>
+        <button class="btn btn-primary" id="logout">Logout</button>
+    </div>
+
+    <script src="../backend/config.js"></script>
+    <script src="./assets/js/jquery-2.2.0.min.js"></script>
+    <script src="./assets/js/bootstrap.min.js"></script>
+    <script>
+        $('#innername').text(JSON.parse(localStorage.getItem("user").email));
+        $('#logout').on('click',(e)=>{
+            e.preventDefault();
+            firebase.auth().signOut().then(()=>{
+                localStorage.setItem("user", JSON.stringify(""));
+                window.location = "index.html";
+            });
+        });    
+    </script>
     
 </body>
 </html>
